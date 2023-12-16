@@ -1,0 +1,22 @@
+[
+    {
+      "id": "deploy-webhook",
+      "execute-command": "/path/to/your/project/deploy.sh",
+      "command-working-directory": "/path/to/your/project",
+      "trigger-rule": {
+        "and": [
+          {
+            "match": {
+              "type": "payload-hash-sha1",
+              "secret": "your-webhook-secret",
+              "parameter": {
+                "source": "header",
+                "name": "X-Hub-Signature"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+  
